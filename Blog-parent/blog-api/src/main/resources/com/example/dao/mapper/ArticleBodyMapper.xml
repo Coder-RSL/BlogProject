@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--MyBatis配置文件-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dao.mapper.ArticleBodyMapper">
+
+    <select id="selectById" resultType="com.example.dao.pojo.ArticleBody">
+        SELECT * FROM ms_article_body WHERE id =#{id};
+    </select>
+    <insert id="insertArticleBody" parameterType="com.example.dao.pojo.ArticleBody">
+        INSERT INTO ms_article_body (id,content,content_html,article_id) VALUES (#{id},#{content},#{contentHtml},#{ArticleId});
+    </insert>
+</mapper>

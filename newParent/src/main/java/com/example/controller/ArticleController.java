@@ -1,0 +1,42 @@
+package com.example.controller;
+
+
+import com.example.service.ArticleService;
+import com.example.vo.Result;
+import com.example.vo.params.PageParams;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("articles")
+public class ArticleController {
+
+    private int i=0;
+
+    @Autowired
+    private ArticleService articleService;
+
+
+    @PostMapping
+    public Result listArticle(@RequestBody PageParams pageParams){
+        return articleService.listArticle(pageParams);
+    }
+    @PostMapping("hot")
+    public Result hotArticle(){
+        int limit =5;
+        return articleService.hotArticle(limit);
+    }
+    @PostMapping("new")
+    public Result newArticle(){
+        int limit =5;
+        return articleService.newArticle(limit);
+    }
+    @PostMapping("listArchives")
+    public Result listArchives(){
+        return articleService.listArchives();
+    }
+
+}
